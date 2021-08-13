@@ -1,9 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-
-import ListItemText from '@material-ui/core/ListItemText';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -16,18 +19,13 @@ import  '../styles/login.css';
 import logo from '../assets/img//finl.png'
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
+    table: {
+      minWidth: 650,
+    },
+  });
 
 
-    root: {
-      width: '850px',
-      
-      backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-      display: 'inline',
-    },
-  }));
   
 
 function User() {
@@ -110,27 +108,41 @@ function User() {
                 //problema a resolver
             }
         <div >
-             {movements ? (
-              
-                <List className={classes.root} >
+            {movements ?(
+                <TableContainer component={Paper}>
+                <Table className={classes.table} size="small" aria-label="a dense table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell>Tipo</TableCell>
+                        <TableCell align="right">Descripcion</TableCell>
+                        <TableCell align="right">Monto</TableCell>
+                        <TableCell align="right">Fecha</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      
 
+                            {movements.data.map((item) => (
+                                <TableRow key={item.id}>
+                                    <TableCell component="th" scope="row">
+                                         {item.type}
+                                    </TableCell>
+                                <TableCell align="right">{item.description}</TableCell>
+                                <TableCell align="right">{item.amount}</TableCell>
+                                <TableCell align="right">{item.date}</TableCell>
 
-                    {movements.data.map((item)=> (
-                        <ListItem button key={item.id}>                                    
-
-                            <ListItemText inset primary={item.type}/>
-                            <ListItemText inset primary={item.description}/>
-                            <ListItemText inset primary={item.amount}/>
-                            <ListItemText inset primary={item.date}/>
-                                   
-                        
-                        </ListItem>
                                 
-                        ))}  
-                                 
-                        </List>
-                                    
-                ) :  null} 
+                                
+                              </TableRow>
+                            ))}
+                                            
+                                
+                                                
+                            
+                        </TableBody>
+                    </Table>
+                </TableContainer>  
+             ):  null} 
            </div>   
             
 
