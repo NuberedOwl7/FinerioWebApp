@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 function User() {
+
     const [user, setUser]= useState(null);
     const [movements, setMovemnt] = useState(null);
 
@@ -105,26 +106,29 @@ function User() {
             {
                 //problema a resolver
             }
-            {/* {movements ? (
-                    <div >
-                        <List className={classes.root} >
+        <div >
+             {movements ? (
+              
+                <List className={classes.root} >
 
-                            {movements.map((item)=> (
-                                <ListItem button key={item.id}>                                    
 
-                                <ListItemText inset primary={item.type}/>
-                                <ListItemText inset primary={item.description}/>
-                                <ListItemText inset primary={item.amount}/>
-                                <ListItemText inset primary={item.date}/>
+                    {movements.data.map((item)=> (
+                        <ListItem button key={item.id}>                                    
+
+                            <ListItemText inset primary={item.type}/>
+                            <ListItemText inset primary={item.description}/>
+                            <ListItemText inset primary={item.amount}/>
+                            <ListItemText inset primary={item.date}/>
                                    
-                                </ListItem>
+                        
+                        </ListItem>
                                 
-                            ))}  
+                        ))}  
                                  
                         </List>
-                    </div>                   
-                ) :  null} */}
-           
+                                    
+                ) :  null} 
+           </div>   
             
 
         </div>
