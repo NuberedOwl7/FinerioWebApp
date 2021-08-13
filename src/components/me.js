@@ -80,8 +80,10 @@ function User() {
   return (
 
     
+    
     <div className="wrapper fadeInDown">
-     
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
         <div id="user">
 
             
@@ -97,8 +99,9 @@ function User() {
                 {user ? (
                    
                     <div >
-                       <h1>hola {user.name}</h1>
+                       <h1>Hola {user.name}</h1>
                        <h2>Tu correo es {user.email}</h2>
+                       <h3>Estos son tus movimientos:</h3> 
                     </div>                   
                 ) :  null}
             </div>
